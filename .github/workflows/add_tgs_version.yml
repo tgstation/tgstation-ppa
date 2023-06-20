@@ -26,6 +26,7 @@ jobs:
     - name: Ensure gpg-agent is Running
       run: |
         gpg --list-keys # Needed to initialize gpg home dir if it isn't
+        cat ~/.gnupg/gpg-agent.conf
         gpg-connect-agent reloadagent /bye
         top -n 1 -b
 
