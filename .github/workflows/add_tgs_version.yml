@@ -23,9 +23,6 @@ jobs:
     - name: Install Tools
       run: sudo apt-get install -y git curl reprepro gnupg2
 
-    - name: Clone gh-pages
-      run: git clone -b gh-pages --single-branch "https://git@github.com/tgstation/tgstation-ppa" $HOME/ppa
-
     - name: Ensure gpg-agent is Running
       run: |
         gpg --list-keys # Needed to initialize gpg home dir if it isn't
@@ -36,6 +33,9 @@ jobs:
         echo "${{ secrets.REPO_PRIVATE_KEY }}" > private.pgp
         echo ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} | gpg --batch --yes --passphrase-fd 0 --import private.pgp
         rm private.pgp
+
+    - name: Clone gh-pages
+      run: git clone -b gh-pages --single-branch "https://git@github.com/tgstation/tgstation-ppa" $HOME/ppa
 
     - name: Download TGS amd64 .deb
       run: curl -L https://github.com/tgstation/tgstation-server/releases/download/tgstation-server-v${{ github.event.inputs.tgs_semver }}/tgstation-server_5.12.6-1_amd64.deb -o $HOME/tgstation-server_5.12.6-1_amd64.deb
