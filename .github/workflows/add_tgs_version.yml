@@ -24,18 +24,10 @@ jobs:
       run: sudo apt-get install -y git curl reprepro gnupg2 procps
 
     - name: Initialize gpg-agent
-      run: |
-        gpg --list-keys # Needed to initialize gpg home dir if it isn't
-        echo -e "batch\nallow-preset-passphrase" > $HOME/.gnupg/gpg-agent.conf
-        gpg-connect-agent reloadagent /bye
-
-    - name: Import GPG Key
-      run: |
-        echo "${{ secrets.REPO_PRIVATE_KEY }}" > private.pgp
-        echo ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} | gpg --batch --yes --passphrase-fd 0 --import private.pgp
-        gpg --batch --yes --passphrase-fd 0 --output private.pgp.sig --sign private.pgp # Populate password cache
-        rm private.pgp*
-        gpg --list-keys
+      uses: crazy-max/ghaction-import-gpg@v5.3.0
+      with:
+        gpg-private-key: ${{ secrets.REPO_PRIVATE_KEY }}
+        passphrase: ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }}
 
     - name: Clone gh-pages
       run: git clone -b gh-pages --single-branch "https://git@github.com/tgstation/tgstation-ppa" $HOME/ppa
