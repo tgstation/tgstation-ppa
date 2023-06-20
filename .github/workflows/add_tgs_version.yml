@@ -23,16 +23,14 @@ jobs:
     - name: Install Tools
       run: sudo apt-get install -y git curl reprepro gnupg2 procps
 
-    - name: Ensure gpg-agent running 
+    - name: Initialize gpg-agent
       run: |
         gpg --list-keys # Needed to initialize gpg home dir if it isn't
-        cat $HOME/.gnupg/gpg-agent.conf
+        echo batch > $HOME/.gnupg/gpg-agent.conf
         gpg-connect-agent reloadagent /bye
-        top -n 1 -b
 
     - name: Import GPG Key
       run: |
-        top -n 1 -b
         echo "${{ secrets.REPO_PRIVATE_KEY }}" > private.pgp
         echo ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} | gpg --batch --yes --passphrase-fd 0 --import private.pgp
         rm private.pgp
@@ -54,7 +52,6 @@ jobs:
     - name: Run includedsc
       run: |
         cd $HOME/ppa/debian
-        top -n 1 -b
         reprepro includedsc unstable $HOME/tgstation-server_5.12.6-1.dsc
 
     - name: Commit
