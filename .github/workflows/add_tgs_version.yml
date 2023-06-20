@@ -33,7 +33,8 @@ jobs:
       run: |
         echo "${{ secrets.REPO_PRIVATE_KEY }}" > private.pgp
         echo ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} | gpg --batch --yes --passphrase-fd 0 --import private.pgp
-        rm private.pgp
+        echo ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} | gpg --batch --yes --passphrase-fd 0 --output private.pgp.sig --sign private.pgp # Populate password cache
+        rm private.pgp*
         gpg --list-keys
 
     - name: Clone gh-pages
@@ -48,13 +49,11 @@ jobs:
     - name: Run includedeb
       run: |
         cd $HOME/ppa/debian
-        /usr/lib/gnupg2/gpg-preset-passphrase -c -P ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} ${{ vars.REPO_KEYGRIP }}
         reprepro includedeb unstable $HOME/tgstation-server_5.12.6-1_amd64.deb
 
     - name: Run includedsc
       run: |
         cd $HOME/ppa/debian
-        /usr/lib/gnupg2/gpg-preset-passphrase -c -P ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} ${{ vars.REPO_KEYGRIP }}
         reprepro includedsc unstable $HOME/tgstation-server_5.12.6-1.dsc
 
     - name: Commit
