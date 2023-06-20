@@ -23,10 +23,10 @@ jobs:
     - name: Install Tools
       run: sudo apt-get install -y git curl reprepro gnupg2 procps
 
-    - name: Ensure gpg-agent is Running
+    - name: Ensure gpg-agent running 
       run: |
         gpg --list-keys # Needed to initialize gpg home dir if it isn't
-        cat ~/.gnupg/gpg-agent.conf
+        cat $HOME/.gnupg/gpg-agent.conf
         gpg-connect-agent reloadagent /bye
         top -n 1 -b
 
