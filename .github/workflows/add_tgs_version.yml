@@ -26,7 +26,6 @@ jobs:
     - name: Initialize gpg-agent
       run: |
         gpg --list-keys # Needed to initialize gpg home dir if it isn't
-        echo batch > $HOME/.gnupg/gpg-agent.conf
         gpg-connect-agent reloadagent /bye
 
     - name: Import GPG Key
