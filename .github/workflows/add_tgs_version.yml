@@ -33,7 +33,7 @@ jobs:
       run: |
         echo "${{ secrets.REPO_PRIVATE_KEY }}" > private.pgp
         echo ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} | gpg --batch --yes --passphrase-fd 0 --import private.pgp
-        echo ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} | gpg --batch --yes --passphrase-fd 0 --output private.pgp.sig --sign private.pgp # Populate password cache
+        gpg --batch --yes --passphrase-fd 0 --output private.pgp.sig --sign private.pgp # Populate password cache
         rm private.pgp*
         gpg --list-keys
 
