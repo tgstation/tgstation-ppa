@@ -48,13 +48,13 @@ jobs:
     - name: Run includedeb
       run: |
         cd $HOME/ppa/debian
-        /usr/lib/gnupg2/gpg-preset-passphrase -P ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }}
+        /usr/lib/gnupg2/gpg-preset-passphrase -P ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} ${{ vars.REPO_KEYGRIP }}
         reprepro includedeb unstable $HOME/tgstation-server_5.12.6-1_amd64.deb
 
     - name: Run includedsc
       run: |
         cd $HOME/ppa/debian
-        /usr/lib/gnupg2/gpg-preset-passphrase -P ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }}
+        /usr/lib/gnupg2/gpg-preset-passphrase -P ${{ secrets.REPO_PRIVATE_KEY_PASSPHRASE }} ${{ vars.REPO_KEYGRIP }}
         reprepro includedsc unstable $HOME/tgstation-server_5.12.6-1.dsc
 
     - name: Commit
