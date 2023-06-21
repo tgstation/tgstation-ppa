@@ -21,7 +21,7 @@ jobs:
       run: sudo apt-get update
 
     - name: Install Tools
-      run: sudo apt-get install -y git curl reprepro gnupg2 procps
+      run: sudo apt-get install -y git curl reprepro gnupg2 procps xz-utils
 
     - name: Initialize gpg-agent
       uses: crazy-max/ghaction-import-gpg@72b6676b71ab476b77e676928516f6982eef7a41
@@ -32,21 +32,16 @@ jobs:
     - name: Clone gh-pages
       run: git clone -b gh-pages --single-branch "https://git@github.com/tgstation/tgstation-ppa" $HOME/ppa
 
-    - name: Download TGS amd64 .deb
-      run: curl -L https://github.com/tgstation/tgstation-server/releases/download/tgstation-server-v${{ github.event.inputs.tgs_semver }}/tgstation-server_5.12.6-1_amd64.deb -o $HOME/tgstation-server_5.12.6-1_amd64.deb
+    - name: Download and Extract TGS Debian Packaging Bundle
+      run: |
+        cd $HOME
+        curl -L https://github.com/tgstation/tgstation-server/releases/download/tgstation-server-v${{ github.event.inputs.tgs_semver }}/tgstation-server-v5.12.6.debian.packaging.tar.xz -o tgstation-server-v5.12.6.debian.packaging.tar.xz
+        tar -xvf tgstation-server-v5.12.6.debian.packaging.tar.xz
 
-    - name: Download TGS .dsc
-      run: curl -L https://github.com/tgstation/tgstation-server/releases/download/tgstation-server-v${{ github.event.inputs.tgs_semver }}/tgstation-server_5.12.6-1.dsc -o $HOME/tgstation-server_5.12.6-1.dsc
-
-    - name: Run includedeb
+    - name: Run reprepro include
       run: |
         cd $HOME/ppa/debian
-        reprepro includedeb unstable $HOME/tgstation-server_5.12.6-1_amd64.deb
-
-    - name: Run includedsc
-      run: |
-        cd $HOME/ppa/debian
-        reprepro includedsc unstable $HOME/tgstation-server_5.12.6-1.dsc
+        reprepro include unstable $HOME/tgstation-server_5.12.6-1_amd64.changes
 
     - name: Commit
       run: |
