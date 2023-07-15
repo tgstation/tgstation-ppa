@@ -1,0 +1,5 @@
+Component: main
+Origin: tgstation13.org
+Label: apt repository
+Architecture: amd64
+Description: tgstation debian package repo
