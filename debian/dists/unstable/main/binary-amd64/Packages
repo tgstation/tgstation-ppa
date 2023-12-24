@@ -1,4 +1,23 @@
 Package: tgstation-server
+Version: 6.0.0-1
+Architecture: amd64
+Maintainer: Jordan Dominion <Cyberboss@users.noreply.github.com>
+Installed-Size: 98138
+Depends: aspnetcore-runtime-8.0, libc6-i386, libstdc++6:i386, gcc-multilib
+Recommends: libsystemd0, gdb
+Homepage: https://tgstation.github.io/tgstation-server
+Priority: optional
+Section: web
+Filename: pool/main/t/tgstation-server/tgstation-server_6.0.0-1_amd64.deb
+Size: 26584876
+SHA512: ab8ea7871bf99c44f4ba1784eac2e54de91a47431593b58db2771a9db4f10393891cb709692824b83179796bf63efab087614e53eba8d91be4537f3bd010e64a
+SHA256: 5e698811258f922fc37b9198d937f37518b1fd306115236b7dee8d5cadb28dc6
+SHA1: 58bbf885b20b03a60b4a1e1130defd815e70abc1
+MD5sum: d7c044dfd8b2ffc275c4d41a8bc51709
+Description: A production scale tool for BYOND server management
+ This is a toolset to manage production BYOND servers. It includes the ability to update the server without having to stop or shutdown the server (the update will take effect on a "reboot" of the server), the ability to start the server and restart it if it crashes, as well as systems for managing code and game files, and locally merging GitHub Pull Requests for test deployments.
+
+Package: tgstation-server
 Version: 5.18.2-1
 Architecture: amd64
 Maintainer: Jordan Dominion <Cyberboss@users.noreply.github.com>
