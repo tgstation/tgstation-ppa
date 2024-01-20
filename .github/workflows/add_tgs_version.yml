@@ -20,10 +20,10 @@ jobs:
     - name: apt-get update
       run: sudo apt-get update
 
-    - name: Install Tools # TODO: Install reprepro from apt once 5.4.1 migrates to ubuntu from debian
+    - name: Install Tools # TODO: Install reprepro from apt once 5.4.1 migrates to ubuntu from debian. The direct link has been known to 404 on updates                          
       run: |
         sudo apt-get install -y git curl gnupg2 procps xz-utils
-        curl -L https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.4.2-1_amd64.deb -o reprepro.deb
+        curl -L https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.4.3-1_amd64.deb -o reprepro.deb
         sudo apt-get install -y ./reprepro.deb
 
     - name: Initialize gpg-agent
