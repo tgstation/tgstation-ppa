@@ -24,19 +24,19 @@ jobs:
       uses: actions/cache@v3
       id: cache-reprepro
       with:
-        path: $HOME/reprepro-deb-cache
+        path: /reprepro-deb-cache
         key: reprepro-deb
 
     - name: Download Reprepro .deb # TODO: Install reprepro from apt once 5.4.1 migrates to ubuntu from debian. The direct link has been known to 404 on updates                          
       if: steps.cache-reprepro.outputs.cache-hit != 'true'
       run: |
         sudo apt-get install -y curl
-        mkdir -p $HOME/reprepro-deb-cache
-        curl -L https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.4.4-1_amd64.deb -o $HOME/reprepro-deb-cache/reprepro.deb
+        mkdir -p /reprepro-deb-cache
+        sudo curl -L https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.4.4-1_amd64.deb -o /reprepro-deb-cache/reprepro.deb
 
     - name: Install Reprepro
       run: |
-        sudo apt-get install -y git gnupg2 procps xz-utils $HOME/reprepro-deb-cache/reprepro.deb
+        sudo apt-get install -y git gnupg2 procps xz-utils /reprepro-deb-cache/reprepro.deb
 
     - name: Initialize gpg-agent
       uses: crazy-max/ghaction-import-gpg@72b6676b71ab476b77e676928516f6982eef7a41 # v5.3.0
