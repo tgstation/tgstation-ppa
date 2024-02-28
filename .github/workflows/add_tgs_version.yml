@@ -9,7 +9,7 @@ on:
         type: string
 
 concurrency:
-  group: "package-update-tgs"
+  group: "package-update"
   cancel-in-progress: false
 
 jobs:
