@@ -32,7 +32,7 @@ jobs:
       run: |
         sudo apt-get install -y curl
         sudo mkdir /reprepro-deb-cache
-        sudo curl -L https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.4.4-1_amd64.deb -o /reprepro-deb-cache/reprepro.deb
+        sudo curl -L https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.4.5-1_amd64.deb -o /reprepro-deb-cache/reprepro.deb
 
     - name: Install Reprepro
       run: |
