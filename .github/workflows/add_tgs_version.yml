@@ -27,12 +27,15 @@ jobs:
         path: /reprepro-deb-cache
         key: reprepro-deb
 
-    - name: Download Reprepro .deb # TODO: Install reprepro from apt once 5.4.1 migrates to ubuntu from debian. The direct link has been known to 404 on updates                          
+    - name: Download Reprepro .deb # TODO: Install reprepro from apt once 5.4.1 migrates to ubuntu from debian. The direct link has been known to 404 on updates
       if: steps.cache-reprepro.outputs.cache-hit != 'true'
       run: |
         sudo apt-get install -y curl
         sudo mkdir /reprepro-deb-cache
         sudo curl -L https://deb.debian.org/debian/pool/main/r/reprepro/reprepro_5.4.5-1_amd64.deb -o /reprepro-deb-cache/reprepro.deb
+
+    - name: Run file on .deb
+      run: file /reprepro-deb-cache/reprepro.deb
 
     - name: Install Reprepro
       run: |
