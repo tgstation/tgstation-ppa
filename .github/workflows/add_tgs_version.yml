@@ -70,7 +70,14 @@ jobs:
         git add --all
         git diff-index --quiet HEAD || git commit -m "Update repository for workflow run ${{ github.run_number }}" -m "TGS Version: ${{ github.event.inputs.tgs_semver }}"
 
+    - name: Generate App Token
+      id: app-token-generation
+      uses: getsentry/action-github-app-token@d4b5da6c5e37703f8c3b3e43abb5705b46e159cc
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
     - name: Push
       run: |
         cd $HOME/ppa
-        git push "https://${{ secrets.GH_PAGES_PUSH_TOKEN }}@github.com/tgstation/tgstation-ppa"
+        git push "https://${{ steps.app-token-generation.outputs.token }}@github.com/tgstation/tgstation-ppa"
