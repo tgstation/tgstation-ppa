@@ -80,4 +80,4 @@ jobs:
     - name: Push
       run: |
         cd $HOME/ppa
-        git push "https://${{ steps.app-token-generation.outputs.token }}@github.com/tgstation/tgstation-ppa"
+        git push "https://tgstation-server-ci:${{ steps.app-token-generation.outputs.token }}@github.com/tgstation/tgstation-ppa"
