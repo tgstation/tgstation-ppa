@@ -1,4 +1,23 @@
 Package: tgstation-server
+Version: 6.9.2-1
+Architecture: amd64
+Maintainer: Jordan Dominion <Cyberboss@users.noreply.github.com>
+Installed-Size: 96375
+Depends: aspnetcore-runtime-8.0, libc6-i386, libstdc++6:i386, gcc-multilib
+Recommends: libsystemd0, gdb
+Homepage: https://tgstation.github.io/tgstation-server
+Priority: optional
+Section: web
+Filename: pool/main/t/tgstation-server/tgstation-server_6.9.2-1_amd64.deb
+Size: 26592690
+SHA512: 0b8ea42ca0512b87b9ef2dfcb0b053858143cf33b6f6c93551fed78d746830c6978ad1ffd3453735876bbbce2adf034a981297262457960fdfdc400f030fca0e
+SHA256: 338ec20f9bb9a1498030ec9897298e2a8ff06af296dc57a6b0d4bb5191f6ae7c
+SHA1: 8821c5c4d14eee8c4e3c6f3b2b467d4fa8fd889d
+MD5sum: b90ca7970647b1db198cb29c192e0067
+Description: A production scale tool for DreamMaker server management
+ This is a toolset to manage production DreamMaker servers. It includes the ability to update the server without having to stop or shutdown the server (the update will take effect on a "reboot" of the server), the ability to start the server and restart it if it crashes, as well as systems for managing code and game files, and locally merging GitHub Pull Requests for test deployments.
+
+Package: tgstation-server
 Version: 6.9.1-1
 Architecture: amd64
 Maintainer: Jordan Dominion <Cyberboss@users.noreply.github.com>
