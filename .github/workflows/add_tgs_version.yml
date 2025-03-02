@@ -17,31 +17,10 @@ jobs:
     name: Add TGS Version
     runs-on: ubuntu-24.04
     steps:
-    - name: apt-get update
-      run: sudo apt-get update
-
-    - name: Cache Reprepro .deb
-      uses: actions/cache@v4
-      id: cache-reprepro
-      with:
-        path: /reprepro-deb-cache
-        key: reprepro-deb
-
-    - name: Download Reprepro .deb # TODO: Install reprepro from apt once 5.4.1 migrates to ubuntu from debian. The direct link has been known to 404 on updates
-      if: steps.cache-reprepro.outputs.cache-hit != 'true'
+    - name: Install Native Dependencies
       run: |
-        sudo apt-get install -y curl
-        sudo mkdir /reprepro-deb-cache
-        sudo curl -L https://file.house/yaegqh-RsQiJ5t7M9x8lUA==.deb -o /reprepro-deb-cache/reprepro.deb
-        sudo curl -L https://file.house/Tnj9xcOWUoPm6doXgBPENg==.deb -o /reprepro-deb-cache/libgpgme11t64_1.24.2-1+b1_amd64.deb
-
-    - name: Run file on .deb
-      run: file /reprepro-deb-cache/reprepro.deb
-
-    - name: Install Reprepro
-      run: |
-        sudo apt-get install -y git gnupg2 procps xz-utils /reprepro-deb-cache/libgpgme11t64_1.24.2-1+b1_amd64.deb
-        sudo apt-get install -u /reprepro-deb-cache/reprepro.deb
+        sudo apt-get update
+        sudo apt-get install -y curl reprepro git gnupg2 procps xz-utils
 
     - name: Initialize gpg-agent
       uses: crazy-max/ghaction-import-gpg@cb9bde2e2525e640591a934b1fd28eef1dcaf5e5 # v6.2.0
