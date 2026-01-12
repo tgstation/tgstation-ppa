@@ -1,28 +1,28 @@
 Origin: tgstation13.org
 Label: apt repository
 Codename: unstable
-Date: Sun, 27 Jul 2025 20:24:54 UTC
+Date: Mon, 12 Jan 2026 06:06:44 UTC
 Architectures: amd64
 Components: main
 Description: tgstation debian package repo
 MD5Sum:
- 84ba372a3361ed638a30dfebf278619a 54193 main/binary-amd64/Packages
- 1bb9c23a809a612bd1af0e6eebcf3083 9302 main/binary-amd64/Packages.gz
+ d5fe590b5b14b21405c31b209eb99759 54193 main/binary-amd64/Packages
+ 805751bfdb76edc42c4a1e203f2884e1 9305 main/binary-amd64/Packages.gz
  46753aa2cccceec9acb7f20560d2b973 125 main/binary-amd64/Release
- 90e9f501c0bb8e34501515d9a2478508 64330 main/source/Sources
- 5eda409d08a774e33b01330578a1db59 14383 main/source/Sources.gz
+ 772788d8d7938e06905fc5de84dbd9e3 64330 main/source/Sources
+ 39ae730afdf4b9a1cb6b46032c03423f 14386 main/source/Sources.gz
  1352e59438c6c2554c695faf9f372146 126 main/source/Release
 SHA1:
- 66b84a4c853ef72f458734f190156fc8b1e7e07c 54193 main/binary-amd64/Packages
- fa6d583d5e6fb70e3aa67012bb9ce4cfa08d2c47 9302 main/binary-amd64/Packages.gz
+ d39f9a8c5cb9bd60f986e21cbfd0f58ea35fe77e 54193 main/binary-amd64/Packages
+ 644f3c94abdda7bc1670800819063e3eef8d8362 9305 main/binary-amd64/Packages.gz
  373697f50a7300cf33d5ff740d69cfbb8c9b1367 125 main/binary-amd64/Release
- 2220289126817a65dce843f96670b6a91052fb1f 64330 main/source/Sources
- 9c419aa5c26f82f6ccb968eef5d5dd48394e95ab 14383 main/source/Sources.gz
+ b4db8bd45d3132e693c00f830562d85536fe6c2b 64330 main/source/Sources
+ 7ca716c46b30f8a0be1fb1146c921de44621b77a 14386 main/source/Sources.gz
  39939b0abfd2c1df15fb0497c572f6f518eb09a9 126 main/source/Release
 SHA256:
- f0524efc6104f3f111c4851497cab7272dad0c7f9874c92f11066185b91afeec 54193 main/binary-amd64/Packages
- 530cdc60592aa6cd95fec1142cdfbf1bbdd65627437b9a5dcdc4da17e6b8e013 9302 main/binary-amd64/Packages.gz
+ 915e9b44974e71a3d14db9d38a2588e68a73094c0a3fe36e638ef8684fd2a6e1 54193 main/binary-amd64/Packages
+ cad2c87ef14c4ee5e5d9d3d16f6f03d28144196016ee7524533bdfa397780969 9305 main/binary-amd64/Packages.gz
  680e9968b7616ea25a0f8db51f35dd3be55d153c5f43699ab04ff30486a05c0a 125 main/binary-amd64/Release
- a68fd681574a2a58c66161398f8219731a7af20fdefdb29d96d77f1aadd21b27 64330 main/source/Sources
- c45c3f40936add73757a50b6e5f54dde237e55ec4be0d1433744b935f3b62311 14383 main/source/Sources.gz
+ e32af10d185a7d2320a6cec766f29e5eb83bc75cf4584ecbd1a4daff45637201 64330 main/source/Sources
+ 947ae8761ba4b5c6a62083d9d7a6c9aabab976fde2adf477115d1676758fd34d 14386 main/source/Sources.gz
  ce140fda554cff5ab40fd59cfc50c283374de10b1ba0a36aaa06ac3d5abd64fe 126 main/source/Release
